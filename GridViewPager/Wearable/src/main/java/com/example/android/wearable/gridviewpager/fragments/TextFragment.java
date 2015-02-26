@@ -46,7 +46,14 @@ public class TextFragment extends Fragment {
         ((ImageView) getView().findViewById(R.id.text_button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", phoneNumber, null)));
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setData(Uri.parse("smsto:"));  // This ensures only SMS apps respond
+                intent.putExtra("sms_body", "Hey, I am at {location}. Want to meet up?");
+                intent.putExtra("address", phoneNumber);
+                if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    getActivity().startActivity(intent);
+                }
+
             }
         });
     }
