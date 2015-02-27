@@ -67,6 +67,20 @@ public class MainActivity extends Activity implements Handler.Callback {
         initIncludeContentIntentCheckbox();
         initVibrateCheckbox();
         initBackgroundPickers();
+
+        findViewById(R.id.notification_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                postNotifications(3);
+            }
+        });
+
+        findViewById(R.id.buzz_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                postNotifications(2);
+            }
+        });
     }
 
     @Override
@@ -140,14 +154,14 @@ public class MainActivity extends Activity implements Handler.Callback {
             mHandler.removeMessages(MSG_POST_NOTIFICATIONS);
             mHandler.sendEmptyMessageDelayed(MSG_POST_NOTIFICATIONS, POST_NOTIFICATIONS_DELAY_MS);
         } else {
-            postNotifications();
+            //todo postNotifications();
         }
     }
 
     /**
      * Post the sample notification(s) using current options.
      */
-    private void postNotifications() {
+    private void postNotifications(int actions) {
         sendBroadcast(new Intent(NotificationIntentReceiver.ACTION_ENABLE_MESSAGES)
                 .setClass(this, NotificationIntentReceiver.class));
 
@@ -156,7 +170,7 @@ public class MainActivity extends Activity implements Handler.Callback {
         CharSequence textPreset = "Ally is just a 5 minute walk away";
         PriorityPreset priorityPreset = PriorityPresets.PRESETS[
                 mPrioritySpinner.getSelectedItemPosition()];
-        ActionsPreset actionsPreset = ActionsPresets.PRESETS[2];//todo change
+        ActionsPreset actionsPreset = ActionsPresets.PRESETS[actions];//todo change
 
         NotificationPreset.BuildOptions options = new NotificationPreset.BuildOptions(
                 titlePreset,
@@ -186,7 +200,7 @@ public class MainActivity extends Activity implements Handler.Callback {
     public boolean handleMessage(Message message) {
         switch (message.what) {
             case MSG_POST_NOTIFICATIONS:
-                postNotifications();
+                //todo postNotifications();
                 return true;
         }
         return false;

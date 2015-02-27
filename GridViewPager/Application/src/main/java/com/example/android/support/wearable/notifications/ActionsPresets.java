@@ -30,8 +30,8 @@ public class ActionsPresets {
     public static final ActionsPreset[] PRESETS = new ActionsPreset[] {
             NO_ACTIONS_PRESET,
             SINGLE_ACTION_PRESET,
-            new ReplyActionPreset(),
-            new ReplyWithChoicesActionPreset(),
+            new NotificationActionPreset(),
+            new BuzzActionPreset(),
             new DifferentActionsOnPhoneAndWearable(),
             new LongTitleActionPreset()
     };
@@ -79,8 +79,11 @@ public class ActionsPresets {
         }
     }
 
-    private static class ReplyActionPreset extends ActionsPreset {//todo add more stuff here
-        public ReplyActionPreset() {
+    /**
+     * These are the actions for a notification
+     */
+    private static class NotificationActionPreset extends ActionsPreset {//todo add more stuff here
+        public NotificationActionPreset() {
             super(R.string.reply_action);
         }
 
@@ -91,7 +94,7 @@ public class ActionsPresets {
                     .setLabel("Buzz")//context.getString(R.string.example_reply_label))
                     .build();
             NotificationCompat.Action buzzAction = new NotificationCompat.Action.Builder(
-                    R.drawable.ic_full_reply,
+                    R.drawable.bee,
                     "Buzz",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))
@@ -125,27 +128,61 @@ public class ActionsPresets {
         }
     }
 
-    private static class ReplyWithChoicesActionPreset extends ActionsPreset {
-        public ReplyWithChoicesActionPreset() {
+    private static class BuzzActionPreset extends ActionsPreset {
+        public BuzzActionPreset() {
             super(R.string.reply_action_with_choices);
         }
 
         @Override
         public void apply(Context context, NotificationCompat.Builder builder,
                 NotificationCompat.WearableExtender wearableOptions) {
-            RemoteInput remoteInput = new RemoteInput.Builder(NotificationUtil.EXTRA_REPLY)
-                    .setLabel(context.getString(R.string.example_reply_answer_label))
-                    .setChoices(new String[] { context.getString(R.string.yes),
-                            context.getString(R.string.no), context.getString(R.string.maybe) })
+            RemoteInput buzzReply = new RemoteInput.Builder(NotificationUtil.EXTRA_REPLY)
+                    .setLabel("Buzz")//context.getString(R.string.example_reply_label))
                     .build();
-            NotificationCompat.Action action = new NotificationCompat.Action.Builder(
-                    R.drawable.ic_full_reply,
-                    context.getString(R.string.example_reply_action),
+            NotificationCompat.Action buzzAction = new NotificationCompat.Action.Builder(
+                    R.drawable.bee,
+                    "Buzz",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))
-                    .addRemoteInput(remoteInput)
+                    .addRemoteInput(buzzReply)
                     .build();
-            wearableOptions.addAction(action);
+            builder.addAction(buzzAction);
+
+            RemoteInput busyReply = new RemoteInput.Builder(NotificationUtil.EXTRA_REPLY)
+                    .setLabel("Busy Buzz")//context.getString(R.string.example_reply_label))
+                    .build();
+            NotificationCompat.Action busyAction = new NotificationCompat.Action.Builder(
+                    R.drawable.busybee,
+                    "Busy Buzz",//context.getString(R.string.example_reply_action),
+                    NotificationUtil.getExamplePendingIntent(context,
+                            R.string.example_reply_action_clicked))
+                    .addRemoteInput(busyReply)
+                    .build();
+            builder.addAction(busyAction);
+
+            RemoteInput textReply = new RemoteInput.Builder(NotificationUtil.EXTRA_REPLY)
+                    .setLabel("Text")//context.getString(R.string.example_reply_label))
+                    .build();
+            NotificationCompat.Action textAction = new NotificationCompat.Action.Builder(
+                    R.drawable.bee,
+                    "Text",//context.getString(R.string.example_reply_action),
+                    NotificationUtil.getExamplePendingIntent(context,
+                            R.string.example_reply_action_clicked))
+                    .addRemoteInput(textReply)
+                    .build();
+            builder.addAction(textAction);
+
+            RemoteInput callReply = new RemoteInput.Builder(NotificationUtil.EXTRA_REPLY)
+                    .setLabel("Call")//context.getString(R.string.example_reply_label))
+                    .build();
+            NotificationCompat.Action callAction = new NotificationCompat.Action.Builder(
+                    R.drawable.bee,
+                    "Call",//context.getString(R.string.example_reply_action),
+                    NotificationUtil.getExamplePendingIntent(context,
+                            R.string.example_reply_action_clicked))
+                    .addRemoteInput(callReply)
+                    .build();
+            builder.addAction(callAction);
         }
     }
 
