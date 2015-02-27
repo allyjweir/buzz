@@ -60,14 +60,14 @@ public class StatusFragment extends Fragment {
     private void setBusy() {
         UserSettings.getInstance(getActivity()).setAvailable(false);
         //statusButton.setImageResource(R.drawable.close_button);
-        statusButton.setBackground(getResources().getDrawable(R.drawable.red_circle));
+        statusButton.setBackground(getResources().getDrawable(R.drawable.selector_status_busy));
         statusText.setText("Busy");
     }
 
     private void setAvailable() {
         UserSettings.getInstance(getActivity()).setAvailable(true);
         //statusButton.setImageResource(R.drawable.close_button);
-        statusButton.setBackground(getResources().getDrawable(R.drawable.green_circle));
+        statusButton.setBackground(getResources().getDrawable(R.drawable.selector_status_available));
         statusText.setText("Available");
     }
 }
