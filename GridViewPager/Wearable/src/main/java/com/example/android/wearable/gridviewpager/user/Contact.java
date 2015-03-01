@@ -7,14 +7,14 @@ import android.graphics.drawable.Drawable;
  */
 public class Contact {
 
-    private Drawable picture;//getResources().getDrawable(R.drawable.green_circle)
+    private int picture;//getResources().getDrawable(R.drawable.green_circle)
     private String name;
     private String distance;
     private boolean available;
     private String phonenumber;
     private String userID;
 
-    public Contact(Drawable picture, String name, String distance, boolean available, String phonenumber, String userID) {
+    public Contact(int picture, String name, String distance, boolean available, String phonenumber, String userID) {
         this.picture = picture;
         this.name = name;
         this.distance = distance;
@@ -23,11 +23,11 @@ public class Contact {
         this.userID = userID;
     }
 
-    public Drawable getPicture() {
+    public int getPicture() {
         return picture;
     }
 
-    public void setPicture(Drawable picture) {
+    public void setPicture(int picture) {
         this.picture = picture;
     }
 

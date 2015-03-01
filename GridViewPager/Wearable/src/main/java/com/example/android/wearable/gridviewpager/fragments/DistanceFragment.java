@@ -44,7 +44,7 @@ public class DistanceFragment extends Fragment {
     public void onViewCreated(View v, Bundle savedInstanceState) {
         super.onViewCreated(v, savedInstanceState);
         Contact contact = UserSettings.getInstance(getActivity()).getContacList().get(contactNumber);
-        ((ImageView) getView().findViewById(R.id.contact_image)).setBackground(contact.getPicture());
+        ((ImageView) getView().findViewById(R.id.contact_image)).setImageResource(contact.getPicture());
         ((TextView) getView().findViewById(R.id.distance_text)).setText(contact.getName() + " " + contact.getDistance());
     }
 }

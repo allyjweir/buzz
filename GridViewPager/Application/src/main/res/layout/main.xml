@@ -118,6 +118,12 @@
             android:layout_height="wrap_content"
             android:text="Buzz"/>
 
+        <Button
+            android:id="@+id/busy_buzz_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Busy"/>
+
     </LinearLayout>
 
 </ScrollView>

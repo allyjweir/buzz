@@ -68,10 +68,10 @@ public class UserSettings {
 
     public static ArrayList<Contact> generateContacts(Context context){
         ArrayList<Contact> contacts = new ArrayList<>();
-        contacts.add(new Contact(context.getResources().getDrawable(R.drawable.debug_background_1), "Vlad", "is just a 5 minute walk away", true, "+447845478600", "vlad_00"));
-        contacts.add(new Contact(context.getResources().getDrawable(R.drawable.debug_background_2), "Ally", "is just a 12 minute walk away", true, "+447845478600", "ally_00"));
-        contacts.add(new Contact(context.getResources().getDrawable(R.drawable.debug_background_3), "Fraser", "is in Edinburgh, United Kingdom", true, "+447845478600", "fraser_00"));
-        contacts.add(new Contact(context.getResources().getDrawable(R.drawable.debug_background_4), "David", "is busy", false, "+447845478600", "david_00"));
+        contacts.add(new Contact(R.drawable.user_vlad, "Vlad", "is just a 5 minute walk away", true, "+447845478600", "vlad_00"));
+        contacts.add(new Contact(R.drawable.debug_background_2, "Ally", "is just a 12 minute walk away", true, "+447845478600", "ally_00"));
+        contacts.add(new Contact(R.drawable.debug_background_3, "Fraser", "is in Edinburgh, United Kingdom", true, "+447845478600", "fraser_00"));
+        contacts.add(new Contact(R.drawable.debug_background_4, "David", "is busy", false, "+447845478600", "david_00"));
         return contacts;
     }
 }

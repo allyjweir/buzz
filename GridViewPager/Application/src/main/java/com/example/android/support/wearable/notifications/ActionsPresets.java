@@ -32,6 +32,7 @@ public class ActionsPresets {
             SINGLE_ACTION_PRESET,
             new NotificationActionPreset(),
             new BuzzActionPreset(),
+            new BusyActionPreset(),
             new DifferentActionsOnPhoneAndWearable(),
             new LongTitleActionPreset()
     };
@@ -106,7 +107,7 @@ public class ActionsPresets {
                     .setLabel("Text")//context.getString(R.string.example_reply_label))
                     .build();
             NotificationCompat.Action textAction = new NotificationCompat.Action.Builder(
-                    R.drawable.ic_full_reply,
+                    R.drawable.message,
                     "Text",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))
@@ -118,7 +119,44 @@ public class ActionsPresets {
                     .setLabel("Call")//context.getString(R.string.example_reply_label))
                     .build();
             NotificationCompat.Action callAction = new NotificationCompat.Action.Builder(
-                    R.drawable.ic_full_reply,
+                    R.drawable.phone,
+                    "Call",//context.getString(R.string.example_reply_action),
+                    NotificationUtil.getExamplePendingIntent(context,
+                            R.string.example_reply_action_clicked))
+                    .addRemoteInput(callReply)
+                    .build();
+            builder.addAction(callAction);
+        }
+    }
+
+    /**
+     * These are the actions for a notification
+     */
+    private static class BusyActionPreset extends ActionsPreset {//todo add more stuff here
+        public BusyActionPreset() {
+            super(R.string.reply_action);
+        }
+
+        @Override
+        public void apply(Context context, NotificationCompat.Builder builder,
+                          NotificationCompat.WearableExtender wearableOptions) {
+            RemoteInput textReply = new RemoteInput.Builder(NotificationUtil.EXTRA_REPLY)
+                    .setLabel("Text")//context.getString(R.string.example_reply_label))
+                    .build();
+            NotificationCompat.Action textAction = new NotificationCompat.Action.Builder(
+                    R.drawable.message,
+                    "Text",//context.getString(R.string.example_reply_action),
+                    NotificationUtil.getExamplePendingIntent(context,
+                            R.string.example_reply_action_clicked))
+                    .addRemoteInput(textReply)
+                    .build();
+            builder.addAction(textAction);
+
+            RemoteInput callReply = new RemoteInput.Builder(NotificationUtil.EXTRA_REPLY)
+                    .setLabel("Call")//context.getString(R.string.example_reply_label))
+                    .build();
+            NotificationCompat.Action callAction = new NotificationCompat.Action.Builder(
+                    R.drawable.phone,
                     "Call",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))
@@ -164,7 +202,7 @@ public class ActionsPresets {
                     .setLabel("Text")//context.getString(R.string.example_reply_label))
                     .build();
             NotificationCompat.Action textAction = new NotificationCompat.Action.Builder(
-                    R.drawable.bee,
+                    R.drawable.message,
                     "Text",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))
@@ -176,7 +214,7 @@ public class ActionsPresets {
                     .setLabel("Call")//context.getString(R.string.example_reply_label))
                     .build();
             NotificationCompat.Action callAction = new NotificationCompat.Action.Builder(
-                    R.drawable.bee,
+                    R.drawable.phone,
                     "Call",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))

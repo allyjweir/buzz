@@ -71,14 +71,21 @@ public class MainActivity extends Activity implements Handler.Callback {
         findViewById(R.id.notification_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                postNotifications(3);
+                postNotifications(2);
             }
         });
 
         findViewById(R.id.buzz_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                postNotifications(2);
+                postNotifications(3);
+            }
+        });
+
+        findViewById(R.id.busy_buzz_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                postNotifications(4);
             }
         });
     }
@@ -166,8 +173,30 @@ public class MainActivity extends Activity implements Handler.Callback {
                 .setClass(this, NotificationIntentReceiver.class));
 
         NotificationPreset preset = NotificationPresets.GRAVITY;
-        CharSequence titlePreset = "Buzz!";
-        CharSequence textPreset = "Ally is just a 5 minute walk away";
+        CharSequence titlePreset;
+        CharSequence textPreset;
+        switch (actions){
+            case 2:
+                titlePreset = "Buzz";
+                textPreset = "Ally is just a 5 minute walk away";
+                break;
+
+            case 3:
+                titlePreset = "Buzz!";
+                textPreset = "Ally buzzed you!";
+                break;
+
+            case 4:
+                titlePreset = "Buzz";
+                textPreset = "Ally is busy. Sorry!";
+                break;
+
+            default:
+                titlePreset = "Buzz";
+                textPreset = "Ally is just a 5 minute walk away";
+                break;
+        }
+
         PriorityPreset priorityPreset = PriorityPresets.PRESETS[
                 mPrioritySpinner.getSelectedItemPosition()];
         ActionsPreset actionsPreset = ActionsPresets.PRESETS[actions];//todo change
