@@ -63,7 +63,7 @@
                     android:minWidth="@dimen/editor_spinner_caption_min_width"
                     android:minHeight="?android:attr/listPreferredItemHeightSmall"
                     android:gravity="center_vertical"
-                    android:text="@string/actions" />
+                    android:text="Sender" />
 
             <Spinner android:id="@+id/actions_spinner"
                     android:layout_marginLeft="10dp"

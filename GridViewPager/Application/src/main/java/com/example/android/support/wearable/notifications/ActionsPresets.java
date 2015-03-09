@@ -99,7 +99,7 @@ public class ActionsPresets {
                     "Buzz",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))
-                    .addRemoteInput(buzzReply)
+                    ////.addRemoteInput(buzzReply)
                     .build();
             builder.addAction(buzzAction);
 
@@ -111,7 +111,7 @@ public class ActionsPresets {
                     "Text",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))
-                    .addRemoteInput(textReply)
+                    //.addRemoteInput(textReply)
                     .build();
             builder.addAction(textAction);
 
@@ -123,7 +123,7 @@ public class ActionsPresets {
                     "Call",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))
-                    .addRemoteInput(callReply)
+                    //.addRemoteInput(callReply)
                     .build();
             builder.addAction(callAction);
         }
@@ -148,7 +148,7 @@ public class ActionsPresets {
                     "Text",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))
-                    .addRemoteInput(textReply)
+                    //.addRemoteInput(textReply)
                     .build();
             builder.addAction(textAction);
 
@@ -160,7 +160,7 @@ public class ActionsPresets {
                     "Call",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))
-                    .addRemoteInput(callReply)
+                    //.addRemoteInput(callReply)
                     .build();
             builder.addAction(callAction);
         }
@@ -182,7 +182,7 @@ public class ActionsPresets {
                     "Buzz",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))
-                    .addRemoteInput(buzzReply)
+                    //.addRemoteInput(buzzReply)
                     .build();
             builder.addAction(buzzAction);
 
@@ -194,7 +194,7 @@ public class ActionsPresets {
                     "Busy Buzz",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))
-                    .addRemoteInput(busyReply)
+                    //.addRemoteInput(busyReply)
                     .build();
             builder.addAction(busyAction);
 
@@ -206,7 +206,7 @@ public class ActionsPresets {
                     "Text",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))
-                    .addRemoteInput(textReply)
+                    //.addRemoteInput(textReply)
                     .build();
             builder.addAction(textAction);
 
@@ -218,7 +218,7 @@ public class ActionsPresets {
                     "Call",//context.getString(R.string.example_reply_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.example_reply_action_clicked))
-                    .addRemoteInput(callReply)
+                    //.addRemoteInput(callReply)
                     .build();
             builder.addAction(callAction);
         }
@@ -249,7 +249,7 @@ public class ActionsPresets {
                     context.getString(R.string.wearable_action),
                     NotificationUtil.getExamplePendingIntent(context,
                             R.string.wearable_action_clicked))
-                    .addRemoteInput(remoteInput)
+                    //.addRemoteInput(remoteInput)
                     .build();
             wearableOptions.addAction(wearableAction);
         }

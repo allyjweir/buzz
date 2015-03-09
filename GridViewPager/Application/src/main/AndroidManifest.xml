@@ -28,6 +28,12 @@
             android:label="Buzz!"
             android:theme="@style/AppTheme" >
 
+        <service android:name=".DataLayerListenerService">
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
+            </intent-filter>
+        </service>
+
         <activity
                 android:name=".MainActivity"
                 android:label="Buzz!"

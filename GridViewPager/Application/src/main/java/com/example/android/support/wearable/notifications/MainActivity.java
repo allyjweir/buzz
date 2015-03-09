@@ -48,6 +48,7 @@ public class MainActivity extends Activity implements Handler.Callback {
 
     private Handler mHandler;
     private Spinner mPrioritySpinner;
+    private Spinner mNameSpinner;
     private CheckBox mIncludeLargeIconCheckbox;
     private CheckBox mLocalOnlyCheckbox;
     private CheckBox mIncludeContentIntentCheckbox;
@@ -62,6 +63,7 @@ public class MainActivity extends Activity implements Handler.Callback {
 
         mHandler = new Handler(this);
         initPrioritySpinner();
+        initRecipientSpinner();
         initIncludeLargeIconCheckbox();
         initLocalOnlyCheckbox();
         initIncludeContentIntentCheckbox();
@@ -106,6 +108,25 @@ public class MainActivity extends Activity implements Handler.Callback {
             @Override
             public void run() {
                 mPrioritySpinner.setOnItemSelectedListener(
+                        new UpdateNotificationsOnItemSelectedListener(true /* cancelExisting */));
+            }
+        });
+    }
+
+    private void initRecipientSpinner() {
+        String[] names = new String[3];
+        names[0] = "Ally";
+        names[1] = "Vlad";
+        names[2] = "Fraser";
+        mNameSpinner = (Spinner) findViewById(R.id.actions_spinner);
+        mNameSpinner.setAdapter(new SenderSpinnerArrayAdapter(this,
+                names));
+        mNameSpinner.setSelection(Arrays.asList(PriorityPresets.PRESETS)
+                .indexOf(names));
+        mNameSpinner.post(new Runnable() {
+            @Override
+            public void run() {
+                mNameSpinner.setOnItemSelectedListener(
                         new UpdateNotificationsOnItemSelectedListener(true /* cancelExisting */));
             }
         });
@@ -175,25 +196,26 @@ public class MainActivity extends Activity implements Handler.Callback {
         NotificationPreset preset = NotificationPresets.GRAVITY;
         CharSequence titlePreset;
         CharSequence textPreset;
+        String name = (String) mNameSpinner.getSelectedItem();
         switch (actions){
             case 2:
                 titlePreset = "Buzz";
-                textPreset = "Ally is just a 5 minute walk away";
+                textPreset = name + " is just a 5 minute walk away";
                 break;
 
             case 3:
                 titlePreset = "Buzz!";
-                textPreset = "Ally buzzed you!";
+                textPreset = name + " buzzed you! He is in Boyd Orr, Glasgow";
                 break;
 
             case 4:
                 titlePreset = "Buzz";
-                textPreset = "Ally is busy. Sorry!";
+                textPreset = name + " is busy. Sorry!";
                 break;
 
             default:
                 titlePreset = "Buzz";
-                textPreset = "Ally is just a 5 minute walk away";
+                textPreset = name + " is just a 5 minute walk away";
                 break;
         }
 
@@ -292,6 +314,27 @@ public class MainActivity extends Activity implements Handler.Callback {
             TextView view = (TextView) getLayoutInflater().inflate(
                     android.R.layout.simple_spinner_item, parent, false);
             view.setText(getString(getItem(position).nameResId));
+            return view;
+        }
+    }
+
+    private class SenderSpinnerArrayAdapter extends ArrayAdapter<String> {
+        public SenderSpinnerArrayAdapter(Context context, String[] names) {
+            super(context, R.layout.simple_spinner_item, names);
+        }
+
+        @Override
+        public View getDropDownView(int position, View convertView, ViewGroup parent) {
+            TextView view = (TextView) super.getDropDownView(position, convertView, parent);
+            view.setText(getItem(position));
+            return view;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            TextView view = (TextView) getLayoutInflater().inflate(
+                    android.R.layout.simple_spinner_item, parent, false);
+            view.setText(getItem(position));
             return view;
         }
     }
